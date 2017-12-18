@@ -66,7 +66,7 @@ void loop() {
   } else if ( heat_status ) {
     currentTime = millis();
   
-    if ( starttime > currentTime ) {
+    if ( starttime < currentTime ) {
       heat_time = currentTime - starttime;
     } else {
       heat_time = 4294967295 - starttime + currentTime;
@@ -140,7 +140,7 @@ void lightOnOff (int state) {
     }
   } else {
     for (int i = 1023; i >= 0; i--) {
-      Timer1.setPwmDuty(led_pin, i);
+      Timer1.setPwmDuty(led_pin, 0);
       delay(xdelay);
     }
   }
